@@ -1,4 +1,4 @@
-(ns advent-of-code-2018.day-4a
+(ns advent-of-code-2018.day-4b
   (:require [advent-of-code-2018.common :as common]))
 
 (->> (common/input "day_4.txt")
@@ -37,11 +37,9 @@
              {})
      (map (fn [[guard sleep-schedule]]
             [guard
-             (reduce + sleep-schedule)
              (->> sleep-schedule
                   (map-indexed vector)
-                  (apply max-key second)
-                  (first))]))
-     (apply max-key second)
-     ((fn [[guard _ sleep-day]]
+                  (apply max-key second))]))
+     (apply max-key (comp second second))
+     ((fn [[guard [sleep-day _]]]
         (* guard sleep-day))))
