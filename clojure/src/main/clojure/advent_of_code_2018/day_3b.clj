@@ -5,7 +5,7 @@
 (let [claims (->> (common/input "day_3.txt")
                   (map (fn [claim-str]
                          (let [[_ id left top width height]
-                               (re-find (re-matcher #"#(\d+) @ (\d+),(\d+): (\d+)x(\d+)" claim-str))]
+                               (re-find #"#(\d+) @ (\d+),(\d+): (\d+)x(\d+)" claim-str)]
                            [(Integer/parseInt id)
                             (Integer/parseInt left)
                             (Integer/parseInt top)

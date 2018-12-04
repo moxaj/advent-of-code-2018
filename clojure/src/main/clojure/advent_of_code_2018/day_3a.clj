@@ -4,8 +4,7 @@
 (->> (common/input "day_3.txt")
      (mapcat (fn [claim-str]
                (let [[_ _ left top width height]
-                     (re-find (re-matcher #"#(\d+) @ (\d+),(\d+): (\d+)x(\d+)"
-                                          claim-str))
+                     (re-find #"#(\d+) @ (\d+),(\d+): (\d+)x(\d+)" claim-str)
                      left   (Integer/parseInt left)
                      top    (Integer/parseInt top)
                      width  (Integer/parseInt width)
