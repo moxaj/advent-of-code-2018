@@ -5,13 +5,13 @@
                  (map (fn [i]
                         [(char i) (char (+ i 32))]))
                  (into {}))]
-  (->> (first (common/input "day_5.txt"))
+  (->> (common/input "day_5.txt")
+       (first)
        (reduce (fn [stack unit]
                  (let [unit' (peek stack)]
-                   (if (or (nil? unit')
-                           (and (not= unit  (pairs unit'))
-                                (not= unit' (pairs unit))))
-                     (conj stack unit)
-                     (pop stack))))
+                   (if (and unit' (or (= unit  (pairs unit'))
+                                      (= unit' (pairs unit))))
+                     (pop stack)
+                     (conj stack unit))))
                [])
        (count)))
